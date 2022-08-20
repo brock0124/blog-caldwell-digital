@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "title": "My First Post!",
+    "content": "Woah! This is a really cool blog post! I mean, can you believe that I'm even writing this? This is my first attempt with React. So far, so good.",
+    "meta": {
+      "likes": 242,
+      "comments": 14,
+      "shares": 45,
+      "link": "/post.html?id=1"
+    }
+  },
+  {
+    "id": 2,
+    "title": "My Second Post!",
+    "content": "Woah! This is a really cool blog post! I mean, can you believe that I'm even writing this? This is my first attempt with React. So far, so good.",
+    "meta": {
+      "likes": 361,
+      "comments": 23,
+      "shares": 48,
+      "link": "/post.html?id=2"
+    }
+  },
+  {
+    "id": 3,
+    "title": "Super Cool Third Post",
+    "content": "Got damn, I'm getting good at this!",
+    "meta": {
+      "likes": 209,
+      "comments": 8,
+      "shares": 22,
+      "link": "/post.html?id=3"
+    }
+  }
+]
