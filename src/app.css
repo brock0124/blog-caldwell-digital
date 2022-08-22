@@ -23,6 +23,13 @@ header {
 
 .post-container h2 {
     margin-bottom: 50px;
+    font-weight: 600;
+    font-size: 30px;
+}
+
+.post-container p {
+    font-weight: 400;
+    font-size: 20px;
 }
 
 .post-data {

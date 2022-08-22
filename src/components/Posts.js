@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 let postContainerStyles = {
     maxWidth:"672px",
@@ -49,7 +50,7 @@ class Post extends React.Component {
                         <span><strong>shares</strong> {post['meta']['shares']}</span>
                     </div>
                 </div>
-                <ReadButton link={post['meta']['link']}></ReadButton>
+                <ReadButton id={post['id']}></ReadButton>
             </div>
         )
     }
@@ -60,6 +61,7 @@ class ReadButton extends React.Component {
         const styles = {
             width: '100%',
             backgroundColor: 'cornflowerblue',
+            display: 'inline-block',
             padding: '15px',
             textAlign: 'center',
             fontSize: '20px',
@@ -67,7 +69,8 @@ class ReadButton extends React.Component {
             borderRadius: '0 0 10px 10px',
         }
 
-        return <a href={this.props.link}><div style={styles}>Read</div></a>
+        return <Link style={styles} to={"post/"+this.props.id}>Read Post</Link>
+        //return <a href={this.props.link}><div style={styles}>Read</div></a>
     }
 }
 

@@ -20,7 +20,8 @@
   "homepage": "https://gitlab.com/brock.caldwell/blog-caldwell-digital#readme",
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
