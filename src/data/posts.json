@@ -31,5 +31,16 @@
       "shares": 22,
       "link": "/post.html?id=3"
     }
+  },
+  {
+    "id": 4,
+    "title": "Trying out a Fourth Post",
+    "content": "This is neat! I got this deployed on my apps server, with the official v1.0 version. This can be version 1.0.1",
+    "meta": {
+      "likes": 209,
+      "comments": 8,
+      "shares": 22,
+      "link": "/post.html?id=4"
+    }
   }
 ]
