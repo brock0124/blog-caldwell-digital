@@ -24,7 +24,7 @@ production_build:
   services:
     - docker:dind
   before_script:
-    - COMMIT=$CI_COMMIT_SHORT_SHA
+    - COMMIT=$CI_COMMIT_TAG
     - IMAGE_TAG="$CI_REGISTRY/brock.caldwell/blog-caldwell-digital/web:$COMMIT"
   script:
     - docker login -u $REGISTRY_USERNAME -p $REGISTRY_TOKEN $CI_REGISTRY
@@ -39,7 +39,7 @@ production_deploy:
     - tags
   before_script:
     - chmod 400 $DOKKU_SSH_KEY
-    - COMMIT=$CI_COMMIT_SHORT_SHA
+    - COMMIT=$CI_COMMIT_TAG
     - IMAGE_TAG="$CI_REGISTRY/brock.caldwell/blog-caldwell-digital/web:$COMMIT"
   script:
     - ssh -o StrictHostKeyChecking=no -i $DOKKU_SSH_KEY "${DOKKU_USER}@${DOKKU_HOST}" "dokku git:from-image ${APP_NAME} ${IMAGE_TAG}"
