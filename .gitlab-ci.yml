@@ -7,7 +7,39 @@
 # See https://docs.gitlab.com/ee/ci/variables/#cicd-variable-precedence
 stages:
 - test
+- build
+- deploy
+
 sast:
   stage: test
 include:
 - template: Security/SAST.gitlab-ci.yml
+
+production_build:
+  stage: build
+  image: docker:latest
+  environment: Production
+  only:
+    - main
+  services:
+    - docker:dind
+  before_script:
+    - COMMIT=$CI_COMMIT_SHORT_SHA
+    - IMAGE_TAG="$CI_REGISTRY/brock.caldwell/blog-caldwell-digital/web:$COMMIT"
+  script:
+    - docker login -u $REGISTRY_USERNAME -p $REGISTRY_TOKEN $CI_REGISTRY
+    - docker build -t $IMAGE_TAG -f Dockerfile .
+    - docker push $IMAGE_TAG
+
+production_deploy:
+  stage: deploy
+  environment: Production
+  image: kroniak/ssh-client
+  only:
+    - main
+  before_script:
+    - chmod 400 $DOKKU_SSH_KEY
+    - COMMIT=$CI_COMMIT_SHORT_SHA
+    - IMAGE_TAG="$CI_REGISTRY/brock.caldwell/blog-caldwell-digital/web:$COMMIT"
+  script:
+    - ssh -o StrictHostKeyChecking=no -i $DOKKU_SSH_KEY "${DOKKU_USER}@${DOKKU_HOST}" "dokku git:from-image ${APP_NAME} ${IMAGE_TAG}"
