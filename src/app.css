@@ -30,6 +30,7 @@ header {
 .post-container p {
     font-weight: 400;
     font-size: 20px;
+    text-indent: 40px;
 }
 
 .post-data {

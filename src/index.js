@@ -7,8 +7,8 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
-import Posts from './data/posts.json';
-import ViewPost from "./routes/post";
+//import Posts from './data/posts.json';
+import ViewPost, {ViewPostFactory} from "./routes/post";
 
 class App extends React.Component {
     render() {
@@ -16,7 +16,7 @@ class App extends React.Component {
             <div>
                 <Header />
                 <div className="content">
-                    <PostFeedContainer posts={this.props.posts} />
+                    <PostFeedContainer  />
                 </div>
             </div>
         );
@@ -30,8 +30,8 @@ let app = ReactDOM.createRoot(
 app.render(
     <BrowserRouter>
         <Routes>
-            <Route path="/" element={<App posts={Posts} />} />
-            <Route path="post/:id" element={<ViewPost />} />
+            <Route path="/" element={<App />} />
+            <Route path="post/:id" element={<ViewPostFactory />} />
         </Routes>
     </BrowserRouter>
 );
