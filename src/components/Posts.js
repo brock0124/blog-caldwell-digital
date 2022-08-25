@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { marked } from "marked";
 import { Config as data} from "../data/wordpress";
-import {Card, CardActions, CardContent, Typography} from "@mui/material";
+import {Alert, Card, CardActions, CardContent, Typography} from "@mui/material";
+import {maxWidth} from "../../dist/src.7ed060e2";
 
 let postContainerStyles = {
     maxWidth:"672px",
@@ -69,7 +70,7 @@ class Post extends React.Component {
             //     <ReadButton id={post['id']}></ReadButton>
             // </div>
             <Card elevation={2} sx={{marginBottom: '2rem'}}>
-                <CardContent >
+                <CardContent sx={maxWidth} >
                     <Typography variant="h2">{post['title']}</Typography>
                     <p
                         className="post-content"

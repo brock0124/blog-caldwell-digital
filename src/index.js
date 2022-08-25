@@ -8,7 +8,7 @@ import {
     Route,
 } from "react-router-dom";
 import {ViewPostFactory} from "./routes/post";
-import {SpeedDial, SpeedDialIcon} from "@mui/material";
+import {Alert, Container, SpeedDial, SpeedDialIcon} from "@mui/material";
 import EditIcon from '@mui/icons-material/Edit';
 
 class App extends React.Component {
@@ -16,9 +16,12 @@ class App extends React.Component {
         return (
             <div>
                 <Header />
-                <div className="content">
-                    <PostFeedContainer  />
-                </div>
+                <Container>
+                    <div className="content">
+                        <PostFeedContainer  />
+                    </div>
+                </Container>
+
                 <div style={{position: "relative"}}>
                     <SpeedDial
                         onClick={() => {
