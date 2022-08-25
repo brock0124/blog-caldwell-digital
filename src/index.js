@@ -7,8 +7,9 @@ import {
     Routes,
     Route,
 } from "react-router-dom";
-//import Posts from './data/posts.json';
-import ViewPost, {ViewPostFactory} from "./routes/post";
+import {ViewPostFactory} from "./routes/post";
+import {SpeedDial, SpeedDialIcon} from "@mui/material";
+import EditIcon from '@mui/icons-material/Edit';
 
 class App extends React.Component {
     render() {
@@ -17,6 +18,20 @@ class App extends React.Component {
                 <Header />
                 <div className="content">
                     <PostFeedContainer  />
+                </div>
+                <div style={{position: "relative"}}>
+                    <SpeedDial
+                        onClick={() => {
+                            window.open(
+                                "http://blog-data.caldwell.digital:1337",
+                                "_blank"
+                            )
+                        }}
+                        ariaLabel="Create new post"
+                        sx={{ position: 'absolute', bottom: 16, right: 16 }}
+                        icon={<SpeedDialIcon openIcon={<EditIcon />} />}
+                        title="Add a new post"
+                    ></SpeedDial>
                 </div>
             </div>
         );

@@ -1,10 +1,25 @@
 import React from 'react';
+import {Box, Paper, Typography} from "@mui/material";
 import ParcelLogo from '../img/parcel-logo.svg';
 
 const Header = () => (
-    <header style={{width:"100%", backgroundColor:"cornflowerblue", marginBottom: "50px"}}>
-        <h1 style={{padding:"20px 50px", color:"white"}}>Brock's Blog</h1>
-    </header>
+    <Box
+        sx={{
+            width: "100%",
+            marginBottom: "5rem"
+        }}
+        className="blue-back"
+        >
+            <Typography
+                variant="h1"
+                p="20px 100px"
+                color="#fff"
+                fontSize="3rem"
+            >
+                Brock's Blog
+            </Typography>
+
+    </Box>
 );
 
 export default Header;

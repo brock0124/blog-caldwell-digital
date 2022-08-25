@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { marked } from "marked";
 import { Config as data} from "../data/wordpress";
+import {Card, CardActions, CardContent, Typography} from "@mui/material";
 
 let postContainerStyles = {
     maxWidth:"672px",
@@ -55,18 +56,33 @@ class Post extends React.Component {
         let post = this.props.post;
 
         return (
-            <div className="post">
-                <div className="post-data">
-                    <h3 className="post-title">{post['title']}</h3>
-                    <p className="post-content" dangerouslySetInnerHTML={{__html: post['content']}}></p>
+            // <div className="post">
+            //     <div className="post-data">
+            //         <h3 className="post-title">{post['title']}</h3>
+            //         <p className="post-content" dangerouslySetInnerHTML={{__html: post['content']}}></p>
+            //         <div className="post-meta_container">
+            //             <span><strong>likes</strong> {post['meta']['likes']}</span>
+            //             <span><strong>comments</strong> {post['meta']['comments']}</span>
+            //             <span><strong>shares</strong> {post['meta']['shares']}</span>
+            //         </div>
+            //     </div>
+            //     <ReadButton id={post['id']}></ReadButton>
+            // </div>
+            <Card elevation={2} sx={{marginBottom: '2rem'}}>
+                <CardContent >
+                    <Typography variant="h2">{post['title']}</Typography>
+                    <p
+                        className="post-content"
+                        dangerouslySetInnerHTML={{__html: post['content']}}
+                    ></p>
                     <div className="post-meta_container">
                         <span><strong>likes</strong> {post['meta']['likes']}</span>
                         <span><strong>comments</strong> {post['meta']['comments']}</span>
                         <span><strong>shares</strong> {post['meta']['shares']}</span>
                     </div>
-                </div>
-                <ReadButton id={post['id']}></ReadButton>
-            </div>
+                </CardContent>
+                <ReadButton id={post['id']} />
+            </Card>
         )
     }
 }
@@ -75,16 +91,15 @@ class ReadButton extends React.Component {
     render() {
         const styles = {
             width: '100%',
-            backgroundColor: 'cornflowerblue',
             display: 'inline-block',
             padding: '15px',
             textAlign: 'center',
             fontSize: '20px',
             color: '#fff',
-            borderRadius: '0 0 10px 10px',
+            borderRadius: '0 0 4px 4px',
         }
 
-        return <Link style={styles} to={"post/"+this.props.id}>Read Post</Link>
+        return <Link style={styles} className="blue-back" to={"post/"+this.props.id}>Read Post</Link>
     }
 }
 
