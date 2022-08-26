@@ -14,7 +14,7 @@ import EditIcon from '@mui/icons-material/Edit';
 class App extends React.Component {
     render() {
         return (
-            <div>
+            <div style={{height: "100vh"}}>
                 <Header />
                 <Container>
                     <div className="content">

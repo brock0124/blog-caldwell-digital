@@ -2,8 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { marked } from "marked";
 import { Config as data} from "../data/wordpress";
-import {Alert, Card, CardActions, CardContent, Typography} from "@mui/material";
-import {maxWidth} from "../../dist/src.7ed060e2";
+import {Alert, Card, CardActions, CardContent, Chip, Typography} from "@mui/material";
 
 let postContainerStyles = {
     maxWidth:"672px",
@@ -22,6 +21,7 @@ class PostFeedContainer extends React.Component {
                         'id': postData.id,
                         'title': postData.Title,
                         'content': marked.parse(postData.Content),
+                        'published_at': postData.published_at,
                         'meta': {
                             'likes': 150,
                             'comments': 272,
@@ -45,7 +45,7 @@ class PostFeedContainer extends React.Component {
 
             return (
                 <div style={postContainerStyles}>
-                    {posts}
+                    {posts.reverse()}
                 </div>
             )
         }
@@ -57,21 +57,13 @@ class Post extends React.Component {
         let post = this.props.post;
 
         return (
-            // <div className="post">
-            //     <div className="post-data">
-            //         <h3 className="post-title">{post['title']}</h3>
-            //         <p className="post-content" dangerouslySetInnerHTML={{__html: post['content']}}></p>
-            //         <div className="post-meta_container">
-            //             <span><strong>likes</strong> {post['meta']['likes']}</span>
-            //             <span><strong>comments</strong> {post['meta']['comments']}</span>
-            //             <span><strong>shares</strong> {post['meta']['shares']}</span>
-            //         </div>
-            //     </div>
-            //     <ReadButton id={post['id']}></ReadButton>
-            // </div>
             <Card elevation={2} sx={{marginBottom: '2rem'}}>
-                <CardContent sx={maxWidth} >
-                    <Typography variant="h2">{post['title']}</Typography>
+                <CardContent >
+                    <div style={{marginBottom: '3.5rem'}}>
+                        <Typography sx={{float:"left"}} variant="h2">{post['title']}</Typography>
+                        <Chip sx={{float:"right"}} label={new Date(post['published_at']).toDateString()}></Chip>
+                    </div>
+
                     <p
                         className="post-content"
                         dangerouslySetInnerHTML={{__html: post['content']}}
